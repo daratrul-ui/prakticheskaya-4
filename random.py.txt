@@ -1,16 +1,33 @@
+import random
+
 while True:
-    choice = input("1 — посчитать, 2 — случайное число, 3 — выход: ")
+    choice = input("1 — посчитать (формат: число операция число), 2 — случайное число, 3 — выход: ")
     if choice == "3":
-        print("Пока!")
+        print("До встречи!")
         break
+
     if choice == "1":
+        parts = input("Введи: число операция число (например, 5 + 3): ").split()
+        if len(parts) != 3:
+            print("Формат: число операция число")
+            continue
+        a, op, b = parts
         try:
-            a, b = map(float, input("Два числа через пробел: ").split())
-            print("Сумма:", a + b)
+            a, b = float(a), float(b)
+            if op == "+": res = a + b
+            elif op == "-": res = a - b
+            elif op == "*": res = a * b
+            elif op == "/":
+                res = a / b if b != 0 else "Ошибка: деление на ноль"
+            else:
+                print("Неизвестная операция")
+                continue
+            print("Результат:", res)
         except ValueError:
-            print("Ошибка: введи два числа.")
+            print("Вводи числа корректно.")
+
     elif choice == "2":
-        import random
         print("Случайное число:", random.randint(1, 100))
     else:
         print("Выбери 1, 2 или 3.")
+
