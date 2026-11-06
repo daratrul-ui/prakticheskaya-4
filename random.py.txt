@@ -1,0 +1,16 @@
+while True:
+    choice = input("1 — посчитать, 2 — случайное число, 3 — выход: ")
+    if choice == "3":
+        print("Пока!")
+        break
+    if choice == "1":
+        try:
+            a, b = map(float, input("Два числа через пробел: ").split())
+            print("Сумма:", a + b)
+        except ValueError:
+            print("Ошибка: введи два числа.")
+    elif choice == "2":
+        import random
+        print("Случайное число:", random.randint(1, 100))
+    else:
+        print("Выбери 1, 2 или 3.")
